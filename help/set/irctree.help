@@ -1,0 +1,16 @@
+%{help=set irctree-flags}%{+n}
+###  %bset irctree-flags%b <flags>
+   list of global flags people must or must not have to use
+   the irctree command. one example is:
+   
+   set irctree-flags "+of-v"
+   will only alow people with +o and +f and not -v flag use
+   the irctree command.
+   
+See Also: whois
+%{help=set irctree-max}%{+n}
+###  %bset irctree-max%b <times:seconds>
+   only answer x times irctree requests in y seconds to prevent flooding
+%{help=set irctree-timeout}%{+n}
+###  %bset irctree-timeout%b <username>
+   specifies how long to wait for LINKS respond

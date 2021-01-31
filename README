@@ -1,0 +1,239 @@
+   
+           IRCtree Version 1.4 for Eggdrop (c) 2000 by \RisK\
+           Eggdrop 1.8.x support by pseudo (Sep 2010)
+   
+   
+INTRODUCTION:
+-------------
+  
+   What is irctree?
+   An eggdrop module, written in C. If you don't know what eggdrop is,
+   this is probably not whatever you're looking for! This module will
+   converts the data returned from the irc command LINKS into a tree
+   formated graph based on the built-in bottree command. Just like the
+   bottree is a nice way to get a feel for how the bots are linked so is
+   irctree for how the irc servers are linked physically.
+   
+   
+INSTALL:
+--------
+   
+    NOTES: THIS version of irctree will ONLY work with version 1.8.x eggdrops
+           
+           You don't need to kill your bot be for installing,
+           BUT you MUST have the source code.
+           
+           If you are using a static eggdrop you MUST reinstall
+           the entire eggdrop. See note below!
+           
+           If you are installing the entire eggdrop you only need
+           to finish the first step and then read the 'INSTALL'
+           file included with eggdrop. You still need to load the
+           module see step 5.
+   
+   1. Move irctree.mod/ to eggdrop1.8.x/src/mod/
+   
+   2. Type 'make modules' from the eggdrop source directory.
+   
+   4. irctree.so (the module) MUST be moved from the eggdrop source
+      directory to your current eggdrop module directory.
+        mv ./irctree.so <module directory>
+        example mv ~/eggdrop1.8.0/irctree.so ~/eggdrop/modules/
+   
+   5. Now the module must be loaded. You can do this by telnet/dcc in
+      the bot and typing '.loadmod irctree' or by adding 'loadmodule
+      irctree' to your bot config so it gets automatically each loaded
+      time the bot starts up.
+   
+   
+DCC COMMANDS:
+---------
+   
+   .irctree [-cdeh] [-f <remote server>]
+     
+       -c            Shows cached tree since .irctree command was last
+                     used without the -c option, instead sending LINKS
+                     command to the irc server and getting a fresh tree. 
+       
+       -d            Shows the server/hup description below server/hup.
+       
+       -e            Extracts the tree to make it more readable by
+                     adding a blank line between servers.
+       
+       -h            Shows the ips/hosts of the hups.
+       
+       -f <server>   Will cause the irc server to forward the LINKS
+                     command to the first server found that matches that
+                     name (if any), and that server is then required to
+                     answer the query.
+   
+   
+EXAMPLES:
+---------
+   
+   Here's how a plain irctree looks (no extra options).
+   
+     [23:40] #Lamer# irctree 
+     afn.blort.org
+       |-zuum.blort.org
+       |   `-wibble.blort.org
+       |       `-theckthy.blort.org
+       `-k9.blort.org
+           |-bigpenis.blort.org
+           `-irc.aol.com
+     Average hops: 1.8, total servers: 7
+   
+   
+   Here's a tree with (c)ached option in other words its the same tree
+   as last time, but now with extra options; show (d)escription shows
+   server info below each server; (e)xtract option will extract the tree
+   to make it more readable (on smaller networks!).
+   
+     [23:47] #Lamer# irctree -cde
+     afn.blort.org
+       |  53 Rules
+       | 
+       |-zuum.blort.org
+       |   | zuum!
+       |   | 
+       |   `-wibble.blort.org
+       |       | wibble wobble ookblat
+       |       | 
+       |       `-theckthy.blort.org
+       |         53 Rules
+       | 
+       `-k9.blort.org
+           | k9 (woot)  (I own you.)
+           | 
+           |-bigpenis.blort.org
+           | OH yeah, its KRGs and ITS BIG
+           | 
+           `-irc.aol.com
+             AOL v5.0!
+      
+     Average hops: 1.8, total servers: 7
+   
+   
+   Here's a tree with show (h)hups option rather self explaining.
+   
+     [23:53] #Lamer# irctree -h
+     irc.webbernet.net
+       `-ircd.webbernet.net
+           |-irc.ru                              (hub: zecke.demos.su)
+           |   `-irc.msu.ru
+           |-*.stealth.net                       (hub: ircd.stealth.net)
+           |   |-irc.gate.ru                     (hub: m9control.am.ru)
+           |   |-*.tw                            (hub: irc.seed.net.tw)
+           |   |-irc.cifnet.com
+           |   |-*.fi                            (hub: ircd.funet.fi)
+   (NOTE: The complete thing is huge so this is only a piece if it)
+   
+   
+   Here's a tree where the -f option was used to (f)orward the LINKS  
+   request to an other server as a result of getting an other view of  
+   the irc tree.
+   
+     [23:59] #Lamer# irctree -f irc.ru
+     irc.ru
+       |-irc.msu.ru
+       `-*.webbernet.net
+           |-*.stealth.net
+           |   |-*.tw
+           |   |-*.au
+           |   |-irc.cifnet.com
+           |   |-*.fi
+   (NOTE: The complete thing is huge so this is only a piece if it)
+   
+   
+FAQ:
+----
+   
+   Q: I can't get the module to compile right what do I do?
+  
+   A: Make sure that:
+     
+       1. You are using eggdrop 1.8.x NOT 1.6.x OR 1.4.x and older!
+       2. Check you paths.
+       3. That you have any idea whatsoever what you are doing!
+       4. If it's something else try http://eggheads.org/
+       5. Check doc/COMPILING for common compiling problems.
+       6. Whatever you do just DO NOT email me!
+   
+   
+   Q: I always get something like 'irctree: Error loading module:
+      ld.so.1: ~/eggdrop/eggdrop: fatal: ~/eggdrop/modules/irctree.so:
+      open failed: No such file or directory' when trying to use 
+      '.loadmod irctree' command or after I added 'loadmodule irctree'
+      line to my bot config, what did I forgot?
+   
+   A: Make sure that:
+       1. If you have a static compiled eggdrop you must reinstall
+          the entire eggdrop. See > INSTALL > NOTES
+       2. You have moved the irctree.so from the eggdrop source dir
+          to you eggdrop module dir!
+       3. Be sure that it's the same path as defined in your config
+          (set mod-path "modules/" etc.)
+       3. How the hell did you get so far. You managed to unstuff
+          and compile the module but you can't move it to the right
+          directory?
+   
+   
+   Q: Why didn't you make a eggdrop 1.3.x version of the module?
+   
+   A: I did, but not this version my first version of this module works
+      only for eggdrop 1.3.x. I say if your satisfied using a 1.3.x
+      you can do with a little older version of irctree, eh?
+      Hey do yourself a favor and update your eggdrop since your
+      already halfway there! 
+   
+   
+   Q: But why doesn't it work with 1.5.x eggdrops?
+   
+      1.5.x is a development version (odd numbered minor versions) of
+      cause if doesn't change the fact that this module it's should, but
+      I have been getting mail saying other, but I dont give a flying
+      shit, you shouldn't be using this unless your a developer or you
+      know what you are doing and if so were you would have no probs
+      getting this simple code to compile and work.
+   
+   Q: Can I use irctree to see spilts?
+   
+   A: No, not directly. You can use the irctree with -c and without -c
+      options (if there were a cached tree in the memory) to compare and 
+      see how the spilt look likes, but it really doesn't tell you what
+      is spilted. (yet)
+   
+   Q: I noticed that you don't need ANY flags to use the irctree command
+      so long as you have a partyline access! Any way to change this?
+   
+   A: I haven't added any support for flags in the module it self cause
+      I haven't found it necessary, but there is one way to fix this.
+      If you add below the 'loadmodule irctree' line:
+        unbind dcc - irctree *dcc:irctree
+        bind dcc <flags> irctree *dcc:irctree
+      I will add is option in the next version, but for now you will
+      have to do it the hard way.
+   
+   
+KNOWN BUGS:
+-----------
+   
+   Then using show hups options on IRCnet you may see something like
+   3ffe:2900:e002:0:250:b7ff:fe14:6155 or 0:0:0:0:0:ffff:216.225.7.165
+   instead of a IP or hostname. This is not a bug in the module and
+   will be fixed.. someday.
+   
+CONTACT:
+-------
+   
+   ]RisK[@IRCnet, email durandal@simnet.is
+   
+   Feel free to send comments/suggestions but do not send
+   common questions how to compile and install this module.
+   
+COPYING:
+------
+   
+   This program is distributed under the terms of the
+   GNU License Agreement. See the file COPYING for details.
+   

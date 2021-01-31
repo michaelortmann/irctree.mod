@@ -1,0 +1,37 @@
+%{help=irctree module}
+###  help for the %birctree module%b
+   The irctree module provides the ability to convert the data returned
+   from the irc command LINKS into a tree formated graph based on the
+   build-in bottree command. Just like the bottree is a nice way to get
+   a feel for how the bots are connected so is irctree to get a feel for
+   how the irc servers are connected physically.
+%{+n}   
+   Tcl variables for configuring the irctree module:
+      %birctree-timeout%b         %birctree-flags%b
+      %birctree-max%b
+   (Use %b'.help set <variable>'%b for more info)
+%{help=irctree}%{+t}
+###  %birctree%b [-cdeh] [-f <remote server>]
+   Shows a tree format graph of the current irc network.
+   
+             Available options:
+   
+       %b-c%b            Shows cached tree since .irctree command was last
+                     used without the -c option, instead sending LINKS
+                     command to the irc server and getting a fresh tree. 
+       
+       %b-d%b            Shows the server/hup description below server/hup.
+       
+       %b-e%b            Extracts the tree to make it more readable by
+                     adding a blank line between servers.
+       
+       %b-h%b            Shows the ips/hosts of the hups.
+       
+       %b-f%b <server>   Will cause the irc server to forward the LINKS
+                     command to the first server found that matches that
+                     name (if any), and that server is then required to
+                     answer the query.
+%{help=all}
+###  commands for the %irctree module%b
+  %birctree%b [-cdeh] [-f <remote server>]
+  
