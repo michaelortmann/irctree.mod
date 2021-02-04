@@ -543,9 +543,9 @@ static void irctree_report(int idx, int details)
 
 static cmd_t C_raw[] =
 {
-	{"364",		"",	(Function) raw_364,	NULL},
-	{"365",		"",	(Function) raw_365,	NULL},
-	{"402",		"",	(Function) raw_402,	NULL},
+	{"364",		"",	(IntFunc) raw_364,	NULL},
+	{"365",		"",	(IntFunc) raw_365,	NULL},
+	{"402",		"",	(IntFunc) raw_402,	NULL},
 	{NULL,		NULL,	NULL,			NULL}
 };
 
