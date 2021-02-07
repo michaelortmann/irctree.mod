@@ -32,7 +32,5 @@ irctree.o: irctree.c ../module.h ../../../src/main.h ../../../config.h \
  ../../../src/eggdrop.h ../../../src/compat/in6.h ../../../src/flags.h \
  ../../../src/cmdt.h ../../../src/tclegg.h ../../../src/tclhash.h \
  ../../../src/chan.h ../../../src/users.h ../../../src/compat/compat.h \
- ../../../src/compat/base64.h ../../../src/compat/inet_aton.h \
- ../../../src/compat/snprintf.h ../../../src/compat/gethostbyname2.h \
- ../../../src/compat/explicit_bzero.h ../../../src/compat/strlcpy.h \
+ ../../../src/compat/snprintf.h ../../../src/compat/strlcpy.h \
  ../modvals.h ../../../src/tandem.h ../server.mod/server.h irctree.h
