@@ -9,11 +9,11 @@
 0xa394,IRCTREE: Failed: Remote server unavailable!\n
 
 # MISC_
-0xa3a0,There is no catched tree available, try skipping the (c)ached option.\n
+0xa3a0,There is no cached tree available, try skipping the (c)ached option.\n
 0xa3a1,Can't use (f)orwad option with (c)ached option. (f)orwad option ignored.\n
 0xa3a2,I can't complete your request cause I'm not connected to a server!\n\
-Try using the (c)ached option to get a catched tree instead.\n
+Try using the (c)ached option to get a cached tree instead.\n
 0xa3a3,I can't complete your request cause flood protection has been triggered!\n\
-Try using the (c)ached option to get a catched tree instead.\n
+Try using the (c)ached option to get a cached tree instead.\n
 0xa3a4,Chill dude I remember you!\n
 0xa3a5,Already waiting for LINKS respond from server (f)orward option ignored\n

@@ -1,8 +1,8 @@
 %{help=irctree module}
 ###  help for the %birctree module%b
    The irctree module provides the ability to convert the data returned
-   from the irc command LINKS into a tree formated graph based on the
-   build-in bottree command. Just like the bottree is a nice way to get
+   from the irc command LINKS into a tree formatted graph based on the
+   built-in bottree command. Just like the bottree is a nice way to get
    a feel for how the bots are connected so is irctree to get a feel for
    how the irc servers are connected physically.
 %{+n}   

@@ -1,4 +1,4 @@
 DESC: IRC tree for Eggdrop
 DESC:
 DESC:Converts the data returned from the irc command LINKS into a tree
-DESC:formated graph based on the built-in bottree command.
+DESC:formatted graph based on the built-in bottree command.

@@ -10,7 +10,7 @@ INTRODUCTION:
    An eggdrop module, written in C. If you don't know what eggdrop is,
    this is probably not whatever you're looking for! This module will
    converts the data returned from the irc command LINKS into a tree
-   formated graph based on the built-in bottree command. Just like the
+   formatted graph based on the built-in bottree command. Just like the
    bottree is a nice way to get a feel for how the bots are linked so is
    irctree for how the irc servers are linked physically.
    

@@ -4,7 +4,7 @@
    the irctree command. one example is:
    
    set irctree-flags "+of-v"
-   will only alow people with +o and +f and not -v flag use
+   will only allow people with +o and +f and not -v flag use
    the irctree command.
    
 See Also: whois
