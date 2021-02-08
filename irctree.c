@@ -609,8 +609,10 @@ char *irctree_start(Function * global_funcs)
 	module_register(MODULE_NAME, irctree_table, 1, 2);
 	if (!(server_funcs = module_depend(MODULE_NAME, "server", 1, 4)))
 		return "You need the server module to use the irctree module.";
-	if (!module_depend(MODULE_NAME, "eggdrop", 108, 0))
-		return "This module requires eggdrop1.8.0 or later";
+  if (!module_depend(MODULE_NAME, "eggdrop", 108, 4)) {
+        module_undepend(MODULE_NAME);
+        return "This module requires Eggdrop 1.8.4 or later.";
+  }
 	Context;
 	add_builtins(H_dcc, C_dcc);
 	add_builtins(H_raw, C_raw);
