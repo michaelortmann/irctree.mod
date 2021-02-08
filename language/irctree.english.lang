@@ -1,7 +1,5 @@
 # irctree.english.lang
 #   language messages for irctree module
-#
-# $Id: irctree.english.lang,v 1.0 2000/5/10 14:17:07 \RisK\ $
 
 # FAILED_
 0xa390,IRCTREE: Failed: LINKS respond timeout!\n
