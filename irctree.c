@@ -16,9 +16,6 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-/*
- * Sep 2010: modified by pseudo to compile and run on eggdrop 1.8.x
- */
 
 #define MAKING_IRCTREE
 #define MODULE_NAME "irctree"
@@ -606,7 +603,7 @@ char *irctree_start(Function * global_funcs)
 {
 	global = global_funcs;
 	Context;
-	module_register(MODULE_NAME, irctree_table, 1, 2);
+	module_register(MODULE_NAME, irctree_table, 1, 5);
 	if (!(server_funcs = module_depend(MODULE_NAME, "server", 1, 4)))
 		return "You need the server module to use the irctree module.";
   if (!module_depend(MODULE_NAME, "eggdrop", 108, 4)) {

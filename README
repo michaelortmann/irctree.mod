@@ -1,6 +1,5 @@
    
-           IRCtree Version 1.4 for Eggdrop (c) 2000 by \RisK\
-           Eggdrop 1.8.x support by pseudo (Sep 2010)
+           IRCtree Version 1.5 for Eggdrop (c) 2000 by \RisK\
    
    
 INTRODUCTION:
@@ -18,7 +17,7 @@ INTRODUCTION:
 INSTALL:
 --------
    
-    NOTES: THIS version of irctree will ONLY work with version 1.8.x eggdrops
+    NOTES: THIS version of irctree will ONLY work with version 1.8.4+ eggdrops
            
            You don't need to kill your bot be for installing,
            BUT you MUST have the source code.
@@ -38,7 +37,7 @@ INSTALL:
    4. irctree.so (the module) MUST be moved from the eggdrop source
       directory to your current eggdrop module directory.
         mv ./irctree.so <module directory>
-        example mv ~/eggdrop1.8.0/irctree.so ~/eggdrop/modules/
+        example mv ~/eggdrop1.8.x/irctree.so ~/eggdrop/modules/
    
    5. Now the module must be loaded. You can do this by telnet/dcc in
       the bot and typing '.loadmod irctree' or by adding 'loadmodule
@@ -152,7 +151,7 @@ FAQ:
   
    A: Make sure that:
      
-       1. You are using eggdrop 1.8.x NOT 1.6.x OR 1.4.x and older!
+       1. You are using eggdrop 1.8.4+ NOT older!
        2. Check you paths.
        3. That you have any idea whatsoever what you are doing!
        4. If it's something else try http://eggheads.org/
