@@ -1,4 +1,3 @@
-
 /* 
  * Copyright (C) 2000  \RisK\
  * 
@@ -75,7 +74,8 @@ static void display_tree(int idx, int options)
 		{
 			int s;
 			s = HUBP-(strlen(treeout[recn]));
-			for (i=0; i < s; i++) tmp[i] = ' ';tmp[i] = '\0';
+			for (i=0; i < s; i++) tmp[i] = ' ';
+			tmp[i] = '\0';
 			if (!i) strcpy(tmp, "  ");
 			dprintf(idx, "%s%s%s\n", treeout[recn], tmp, hups[order[recn]]);
 		}
@@ -114,7 +114,8 @@ static void display_tree(int idx, int options)
 			}
 			else nwrk[0] = '\0';
 			l=c-strlen(nwrk);
-			for (i=0; i < l; i++) tmp[i] = ' ';tmp[i] = '\0';
+			for (i=0; i < l; i++) tmp[i] = ' ';
+			tmp[i] = '\0';
 		}
 		if (options&SHOW_D) dprintf(idx, "%s%s%s\n", nwrk, tmp, desc[order[recn]]);
 		if (options&DO_EXT) dprintf(idx, "%s \n", nwrk);
@@ -603,7 +604,7 @@ char *irctree_start(Function * global_funcs)
 {
 	global = global_funcs;
 	Context;
-	module_register(MODULE_NAME, irctree_table, 1, 5);
+	module_register(MODULE_NAME, irctree_table, 1, 6);
 	if (!(server_funcs = module_depend(MODULE_NAME, "server", 1, 4)))
 		return "You need the server module to use the irctree module.";
   if (!module_depend(MODULE_NAME, "eggdrop", 108, 4)) {
