@@ -29,7 +29,6 @@ static void irctree_checks()
 {
 	int i;
 	
-	Context;
 	if (stat&QUARYIP)
 	{
 		counter++;
@@ -60,7 +59,6 @@ static void display_tree(int idx, int options)
 {
 	int recn;
 	
-	Context;
 	for (recn = 0; recn < tlen; recn++)
 	{
 		int i;
@@ -127,7 +125,6 @@ static void t_printf(char *text,...)
 	char buf[BUFSIZE];
 	va_list argp;
 	
-	Context;
 	va_start(argp,text);
 	vsprintf(buf,text,argp);
 	treeout[tlen]=nmalloc(strlen(buf)+1);
@@ -140,7 +137,6 @@ static int draw_tree()
 	int i, more = 1, hops = 0, lev=0, coun=0, mark[MAXLEV];
 	char sl[MAXLEV][BUFSIZE];
 	
-	Context;
 	for (i = 0; i < MAXSER+1; i++) if (treeout[i])
 	{
 		nfree(treeout[i]);
@@ -210,7 +206,6 @@ static int raw_365(char *from, char *msg)
 {	
 	int i;
 	
-	Context;
 	if(!(stat&QUARYIP)) return 0;
 	if (!draw_tree()) {
 		for (i = 0; i < idxc; i++) dprintf(idxl[i], FAILED_MAXLEV);
@@ -239,7 +234,6 @@ static int raw_402(char *from, char *msg)
 {
 	int i;
 	
-	Context;
 	if(!(stat&QUARYIP) && !(FORWARD)) return 0;
 	for (i = 0; i < idxc; i++) dprintf(idxl[i], FAILED_REMOTE);
 	stat&=~QUARYIP;
@@ -268,7 +262,6 @@ static void lindex(char *destination, char *source, int p1, int size)
 {
 	char *dst = destination, *src = source;
 	int p2=(p1+1), a1=0, a2=0, a3=0;
-	Context;
 	while (a1<strlen(source) && a3 != size)
 	{
 		if (*(src+a1)==' ')
@@ -290,7 +283,6 @@ static int raw_364(char *from, char *msg)
 	int i;
 	char buf[BUFSIZE];
 	
-	Context;
 	if(!(stat&QUARYIP)) return 0;
 	
 	if (serc == MAXSER) {
@@ -326,15 +318,12 @@ static int raw_364(char *from, char *msg)
 	stat&=~FORWARD;
 	
 	lindex(buf, msg, 1, sizeof(buf));
-	Context;
 	slink[serc].from=nmalloc(strlen(buf)+1);
 	strcpy(slink[serc].from,buf);
 	lindex(buf, msg, 2, sizeof(buf));
-	Context;
 	slink[serc].to=nmalloc(strlen(buf)+1);
 	strcpy(slink[serc].to,buf);
 	lindex(buf, msg, 4, sizeof(buf));
-	Context;
 	if (buf[0] == '[') {
 		i=1;
 		while(buf[i])
@@ -343,18 +332,13 @@ static int raw_364(char *from, char *msg)
 			i++;
 		}
 		buf[i-2]= '\0';
-		Context;
 		hups[serc]=nmalloc(strlen(buf)+8);
-		Context;
 		snprintf(hups[serc], strlen(buf)+8 ,"(hup: %s)", buf);
-		Context;
 		lrange(buf, msg, 5, sizeof(buf));
 	}
 	else lrange(buf, msg, 4, sizeof(buf));
-	Context;
 	desc[serc]=nmalloc(strlen(buf)+1);
 	strcpy(desc[serc],buf);
-	Context;
 	serc++;
 	return 0;
 }
@@ -364,7 +348,6 @@ static int cmd_irctree(struct userrec *u, int idx, char *args)
 	int i, options=0, c=0, d=0, use_rs=0, roption=0;
 	char used_args[40], remote_sv[32];
 	
-	Context;
 	if (flags[0])
 	{
 		int ok=0, f;
@@ -376,7 +359,6 @@ static int cmd_irctree(struct userrec *u, int idx, char *args)
 		f = (minus.global || minus.udef_global);
 		if (flagrec_eq(&plus, &user))
 		{
-			Context;
 			if (!f) ok = 1;
 			else
 			{
@@ -523,7 +505,6 @@ static int irctree_expmem()
 {
 	int i, size = 0;
 
-	Context;
 	for (i = 0; i < MAXSER; i++)
 	{
 		if (hups[i]) size += strlen(hups[i])+1;
@@ -535,7 +516,6 @@ static int irctree_expmem()
 
 static void irctree_report(int idx, int details)
 {
-	Context;
 	if (details) dprintf(idx, "    Using %d bytes of memory\n", irctree_expmem());
 }
 
@@ -575,15 +555,12 @@ static char *irctree_close();
 
 static char *irctree_close()
 {
-	Context;
 	rem_builtins(H_dcc, C_dcc);
 	rem_builtins(H_raw, C_raw);
 	rem_tcl_ints(irctree_tcl_ints);
-	Context;
 	rem_tcl_strings(irctree_tcl_strings);
 	rem_tcl_coups(irctree_tcl_coups);
 	del_hook(HOOK_SECONDLY, (Function) irctree_checks);
-	Context;
 	rem_help_reference("irctree.help");
 	del_lang_section("irctree");
 	module_undepend(MODULE_NAME);
@@ -603,24 +580,20 @@ static Function irctree_table[] =
 char *irctree_start(Function * global_funcs)
 {
 	global = global_funcs;
-	Context;
-	module_register(MODULE_NAME, irctree_table, 1, 6);
+	module_register(MODULE_NAME, irctree_table, 1, 7);
 	if (!(server_funcs = module_depend(MODULE_NAME, "server", 1, 4)))
 		return "You need the server module to use the irctree module.";
   if (!module_depend(MODULE_NAME, "eggdrop", 108, 4)) {
         module_undepend(MODULE_NAME);
         return "This module requires Eggdrop 1.8.4 or later.";
   }
-	Context;
 	add_builtins(H_dcc, C_dcc);
 	add_builtins(H_raw, C_raw);
-	Context;
 	add_tcl_ints(irctree_tcl_ints);
 	add_tcl_strings(irctree_tcl_strings);
 	add_tcl_coups(irctree_tcl_coups);
 	thr=max_thr;
 	add_hook(HOOK_SECONDLY, (Function) irctree_checks);
-	Context;
 	add_help_reference("irctree.help");
 	add_lang_section("irctree");
 	return NULL;

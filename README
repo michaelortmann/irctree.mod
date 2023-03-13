@@ -1,5 +1,5 @@
    
-           IRCtree Version 1.6 for Eggdrop (c) 2000 by \RisK\
+           IRCtree Version 1.7 for Eggdrop (c) 2000 by \RisK\
    
    
 INTRODUCTION:
@@ -8,7 +8,7 @@ INTRODUCTION:
    What is irctree?
    An eggdrop module, written in C. If you don't know what eggdrop is,
    this is probably not whatever you're looking for! This module will
-   converts the data returned from the irc command LINKS into a tree
+   convert the data returned from the irc command LINKS into a tree
    formatted graph based on the built-in bottree command. Just like the
    bottree is a nice way to get a feel for how the bots are linked so is
    irctree for how the irc servers are linked physically.
