@@ -152,10 +152,10 @@ FAQ:
    A: Make sure that:
      
        1. You are using eggdrop 1.8.4+ NOT older!
-       2. Check you paths.
+       2. Check your paths.
        3. That you have any idea whatsoever what you are doing!
-       4. If it's something else try http://eggheads.org/
-       5. Check doc/COMPILING for common compiling problems.
+       4. If it's something else try https://www.eggheads.org/
+       5. Check doc/COMPILE-GUIDE for common compiling problems.
        6. Whatever you do just DO NOT email me!
    
    
